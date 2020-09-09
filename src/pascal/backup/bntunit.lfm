@@ -1,4 +1,4 @@
-object Form1: TForm1
+object boanoite: Tboanoite
   Left = 502
   Height = 189
   Top = 186
@@ -16,7 +16,7 @@ object Form1: TForm1
     Left = 23
     Height = 127
     Top = 49
-    Width = 201
+    Width = 200
     AutoFill = True
     Caption = 'Programar para...'
     ChildSizing.LeftRightSpacing = 6
@@ -27,7 +27,7 @@ object Form1: TForm1
     ChildSizing.Layout = cclTopToBottomThenLeftToRight
     ChildSizing.ControlsPerLine = 2
     ClientHeight = 103
-    ClientWidth = 199
+    ClientWidth = 198
     ColumnLayout = clVerticalThenHorizontal
     Font.Height = -19
     Font.Name = 'Sans'
@@ -41,7 +41,7 @@ object Form1: TForm1
     ParentShowHint = False
     TabOrder = 0
   end
-  object ComboBox1: TComboBox
+  object addTempo: TComboBox
     Left = 248
     Height = 40
     Top = 88
@@ -70,7 +70,24 @@ object Form1: TForm1
     Caption = 'Programar!'
     Font.Height = -19
     Font.Name = 'Sans'
+    OnClick = BitBtn1Click
     ParentFont = False
     TabOrder = 2
+  end
+  object myShell: TProcessUTF8
+    Active = False
+    Options = []
+    Priority = ppNormal
+    StartupOptions = []
+    ShowWindow = swoNone
+    WindowColumns = 0
+    WindowHeight = 0
+    WindowLeft = 0
+    WindowRows = 0
+    WindowTop = 0
+    WindowWidth = 0
+    FillAttribute = 0
+    left = 384
+    top = 16
   end
 end

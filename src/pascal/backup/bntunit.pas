@@ -14,6 +14,8 @@ type
 
   Tboanoite = class(TForm)
     cancelar: TButton;
+    letreiro: TLabel;
+    wallpaper: TImage;
     programar: TBitBtn;
     addTempo: TComboBox;
     acao: TRadioGroup;
@@ -255,20 +257,20 @@ procedure Tboanoite.addTempoChange(Sender: TObject);
 begin
   if addTempo.ItemIndex = 5 then
   begin
-  boanoite.Height:= 240;
-  programar.Top:= 190;
+  boanoite.Height:= 300;
+  programar.Top:= 245;
 
-  num1.Top:= 140;
-  num2.Top:= 140;
-  separador.Top:= 140;
+  num1.Top:= 195;
+  num2.Top:= 195;
+  separador.Top:= 195;
   end else
   begin             
-  boanoite.Height:= 190;
-  programar.Top:= 140;
+  boanoite.Height:= 240;
+  programar.Top:= 195;
 
-  num1.Top:= 190;
-  num2.Top:= 190;
-  separador.Top:= 190;
+  num1.Top:= 245;
+  num2.Top:= 245;
+  separador.Top:= 245;
   end;
 end;
 
@@ -282,7 +284,6 @@ end;
 
 procedure Tboanoite.FormShow(Sender: TObject);
 begin
-  acao.Visible:=true;
 end;
 
 procedure Tboanoite.num1KeyPress(Sender: TObject; var Key: char);

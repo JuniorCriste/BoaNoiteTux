@@ -40,9 +40,9 @@ end;
 
 procedure Tconfirmacao.desfazerClick(Sender: TObject);
 begin
-  boanoite.Visible:= true;
-  boanoite.cancelar.Click;
+  boanoite.Visible:= true;  
   confirmacao.Visible:= false;
+  boanoite.cancelar.Click;
 
 end;
 

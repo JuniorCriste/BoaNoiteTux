@@ -1,15 +1,16 @@
 object boanoite: Tboanoite
-  Left = 502
-  Height = 189
-  Top = 186
+  Left = 376
+  Height = 190
+  Top = 204
   Width = 482
-  BorderStyle = bsDialog
+  BorderStyle = bsSingle
   Caption = 'Boa Noite Tux!'
-  ClientHeight = 189
+  ClientHeight = 190
   ClientWidth = 482
   Font.Height = -21
   Font.Name = 'Sans'
   OnCreate = FormCreate
+  OnShow = FormShow
   Position = poDesktopCenter
   LCLVersion = '1.8.2.0'
   object acao: TRadioGroup
@@ -40,6 +41,7 @@ object boanoite: Tboanoite
     ParentFont = False
     ParentShowHint = False
     TabOrder = 0
+    Visible = False
   end
   object addTempo: TComboBox
     Left = 248
@@ -58,11 +60,12 @@ object boanoite: Tboanoite
       '1 Hora'
       'Outro...'
     )
+    OnChange = addTempoChange
     Style = csDropDownList
     TabOrder = 1
     Text = '15 Minutos'
   end
-  object BitBtn1: TBitBtn
+  object programar: TBitBtn
     Left = 248
     Height = 35
     Top = 140
@@ -70,9 +73,51 @@ object boanoite: Tboanoite
     Caption = 'Programar!'
     Font.Height = -19
     Font.Name = 'Sans'
-    OnClick = BitBtn1Click
+    OnClick = programarClick
     ParentFont = False
     TabOrder = 2
+  end
+  object num1: TEdit
+    Left = 256
+    Height = 42
+    Top = 190
+    Width = 50
+    Alignment = taCenter
+    MaxLength = 2
+    NumbersOnly = True
+    OnKeyPress = num1KeyPress
+    TabOrder = 3
+    Text = '00'
+  end
+  object num2: TEdit
+    Left = 328
+    Height = 42
+    Top = 192
+    Width = 48
+    Alignment = taCenter
+    MaxLength = 2
+    NumbersOnly = True
+    OnKeyPress = num2KeyPress
+    TabOrder = 4
+    Text = '00'
+  end
+  object separador: TLabel
+    Left = 312
+    Height = 25
+    Top = 200
+    Width = 7
+    Caption = ':'
+    ParentColor = False
+  end
+  object cancelar: TButton
+    Left = 23
+    Height = 49
+    Top = 208
+    Width = 67
+    Caption = 'XXX'
+    OnClick = cancelarClick
+    TabOrder = 5
+    Visible = False
   end
   object myShell: TProcessUTF8
     Active = False

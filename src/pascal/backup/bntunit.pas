@@ -6,18 +6,27 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, UTF8Process, Forms, Controls, Graphics, Dialogs,
-  ExtCtrls, ActnList, StdCtrls, Buttons;
+  ExtCtrls, ActnList, StdCtrls, Buttons, bntcunit;
 
 type
 
   { Tboanoite }
 
   Tboanoite = class(TForm)
-    BitBtn1: TBitBtn;
+    cancelar: TButton;
+    programar: TBitBtn;
     addTempo: TComboBox;
     acao: TRadioGroup;
+    separador: TLabel;
+    num1: TEdit;
     myShell: TProcessUTF8;
-    procedure BitBtn1Click(Sender: TObject);
+    num2: TEdit;
+    procedure addTempoChange(Sender: TObject);
+    procedure cancelarClick(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure num1KeyPress(Sender: TObject; var Key: char);
+    procedure num2KeyPress(Sender: TObject; var Key: char);
+    procedure programarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure acaoClick(Sender: TObject);
   private
@@ -77,7 +86,7 @@ begin
   ordenar:= 'shutdown ' + showH + ':' + showM;
   end else
   begin
-  ordenar:= 'restart ' + showH + ':' + showM;
+  ordenar:= 'shutdown -r ' + showH + ':' + showM;
   end;
 end;
 
@@ -153,7 +162,7 @@ begin
 
   {1 Hora}
   if  boanoite.addTempo.ItemIndex = 4 then
-  begin                 
+  begin
     if horasNum < 24 then
     begin
     horasNum:= horasNum + 1
@@ -164,8 +173,20 @@ begin
 
   end;
 
+
   showM := inttostr(minutosnum);
   showH:= intToStr(horasnum);
+
+
+
+  {Outro Horário}
+  if  boanoite.addTempo.ItemIndex = 5 then
+  begin
+    showH:= boanoite.num1.Text;
+    showM:= boanoite.num2.Text;
+
+  end;
+
 
   if minutosNum < 10 then
   begin
@@ -176,8 +197,6 @@ begin
   begin
   showH := '0' + IntToStr(minutosNum);
   end;
-
-  showmessage('Vai desligar em ' + showH + ':' + showM );
 
   comando;
 
@@ -193,19 +212,93 @@ begin
 
 end;
 
-procedure Tboanoite.BitBtn1Click(Sender: TObject);
+procedure ShellScript;
 var
-  programar: TstringList;
+  programarShell: TstringList;
 begin
+  programarShell := TStringList.create;
+  boanoite.myShell.CommandLine := ordenar;
+  boanoite.myShell.Execute;
+{  programarShell.Free;
+  boanoite.myShell.Free;
+ }
+  {showmessage(ordenar);}
 
+end;
+
+procedure Tboanoite.programarClick(Sender: TObject);
+begin
+  if (StrToInt(num1.Text) > 23) or (StrToInt(num2.Text) >59) then
+  begin
+  showmessage('ERRO: O horário indicado não existe!');
+  end else
+  begin
   adicionarTempo;
- { programar := TStringList.create;
-  myShell.CommandLine := ordenar;
-  myShell.Execute;
-  programar.Free;
-  myShell.Free;
-  }
-  showmessage(ordenar);
+  ShellScript;
+
+  confirmacao.letreiro2.Caption:= showH + ':' + showM;
+  if acao.ItemIndex =0 then
+  begin
+  confirmacao.letreiro1.Caption:= 'PROGRAMADO PARA DESLIGAR ÁS';
+  end else
+  begin
+  confirmacao.letreiro1.Caption:= 'PROGRAMADO PARA REINICIAR ÁS';
+  end;
+
+  confirmacao.Visible:= true;
+  boanoite.Visible:= false;
+  end;
+
+end;
+
+procedure Tboanoite.addTempoChange(Sender: TObject);
+begin
+  if addTempo.ItemIndex = 5 then
+  begin
+  boanoite.Height:= 240;
+  programar.Top:= 190;
+
+  num1.Top:= 140;
+  num2.Top:= 140;
+  separador.Top:= 140;
+  end else
+  begin             
+  boanoite.Height:= 190;
+  programar.Top:= 140;
+
+  num1.Top:= 190;
+  num2.Top:= 190;
+  separador.Top:= 190;
+  end;
+end;
+
+procedure Tboanoite.cancelarClick(Sender: TObject);
+begin
+  ordenar:= 'shutdown -c';
+  ShellScript;
+  showmessage('Programação desfeita com sucesso!');
+
+end;
+
+procedure Tboanoite.FormShow(Sender: TObject);
+begin
+  acao.Visible:=true;
+end;
+
+procedure Tboanoite.num1KeyPress(Sender: TObject; var Key: char);
+begin
+  if  not ( Key in ['0'..'9', Chr(8)] ) then
+  begin
+  Key := #0
+  end;
+end;
+
+procedure Tboanoite.num2KeyPress(Sender: TObject; var Key: char);
+begin
+  if  not ( Key in ['0'..'9', Chr(8)] ) then
+  begin
+  Key := #0
+  end;
 end;
 
 end.

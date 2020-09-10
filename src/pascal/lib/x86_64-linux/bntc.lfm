@@ -1,0 +1,51 @@
+object confirmacao: Tconfirmacao
+  Left = 540
+  Height = 190
+  Top = 197
+  Width = 484
+  BorderStyle = bsSingle
+  Caption = 'Boa Noite Tux: Agendado!'
+  ClientHeight = 190
+  ClientWidth = 484
+  OnCreate = FormCreate
+  Position = poDesktopCenter
+  LCLVersion = '1.8.2.0'
+  object letreiro1: TLabel
+    Left = 0
+    Height = 32
+    Top = 40
+    Width = 484
+    Alignment = taCenter
+    AutoSize = False
+    Caption = 'PROGRAMADO PARA DESLIGAR ÁS'
+    Font.Height = -20
+    Font.Name = 'Sans'
+    ParentColor = False
+    ParentFont = False
+  end
+  object letreiro2: TLabel
+    Left = 0
+    Height = 40
+    Top = 80
+    Width = 484
+    Alignment = taCenter
+    AutoSize = False
+    Caption = '23:32'
+    Font.Height = -27
+    Font.Name = 'Sans'
+    ParentColor = False
+    ParentFont = False
+  end
+  object desfazer: TBitBtn
+    Left = 264
+    Height = 44
+    Top = 136
+    Width = 213
+    Caption = 'Cancelar!'
+    Font.Height = -21
+    Font.Name = 'Sans'
+    OnClick = desfazerClick
+    ParentFont = False
+    TabOrder = 0
+  end
+end

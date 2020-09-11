@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
-  Buttons;
+  Buttons, ExtCtrls;
 
 type
 
@@ -16,6 +16,7 @@ type
     desfazer: TBitBtn;
     letreiro1: TLabel;
     letreiro2: TLabel;
+    wallpaper: TImage;
     procedure desfazerClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
   private

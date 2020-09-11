@@ -1,24 +1,25 @@
 object boanoite: Tboanoite
   Left = 438
-  Height = 240
+  Height = 265
   Top = 212
   Width = 449
   BorderStyle = bsSingle
   Caption = 'Boa Noite Tux!'
-  ClientHeight = 240
+  ClientHeight = 241
   ClientWidth = 449
   Font.Height = -21
   Font.Name = 'Sans'
+  Menu = meumenu
   OnCreate = FormCreate
-  OnShow = FormShow
   Position = poDesktopCenter
   LCLVersion = '1.8.2.0'
   object wallpaper: TImage
     Left = 0
-    Height = 240
+    Height = 241
     Top = 0
     Width = 449
     Align = alClient
+    ParentShowHint = False
     Picture.Data = {
       1754506F727461626C654E6574776F726B4772617068696350A6000089504E47
       0D0A1A0A0000000D49484452000001C20000012C08060000005056B3B7000001
@@ -1354,37 +1355,6 @@ object boanoite: Tboanoite
       0000000049454E44AE426082
     }
   end
-  object acao: TRadioGroup
-    Left = 24
-    Height = 126
-    Top = 104
-    Width = 200
-    AutoFill = True
-    Caption = 'Programar para...'
-    ChildSizing.EnlargeHorizontal = crsScaleChilds
-    ChildSizing.EnlargeVertical = crsHomogenousChildResize
-    ChildSizing.ShrinkHorizontal = crsScaleChilds
-    ChildSizing.ShrinkVertical = crsScaleChilds
-    ChildSizing.Layout = cclLeftToRightThenTopToBottom
-    ChildSizing.ControlsPerLine = 1
-    ClientHeight = 100
-    ClientWidth = 198
-    Color = 8408865
-    Font.Color = 15198183
-    Font.Height = -21
-    Font.Name = 'Sans'
-    ItemIndex = 0
-    Items.Strings = (
-      'Desligar'
-      'Reiniciar'
-    )
-    OnClick = acaoClick
-    ParentBidiMode = False
-    ParentFont = False
-    ParentColor = False
-    ParentShowHint = False
-    TabOrder = 0
-  end
   object addTempo: TComboBox
     Left = 240
     Height = 40
@@ -1461,8 +1431,61 @@ object boanoite: Tboanoite
     TabOrder = 5
     Visible = False
   end
+  object acao: TRadioGroup
+    Left = 24
+    Height = 126
+    Top = 104
+    Width = 200
+    AutoFill = True
+    Caption = 'Programar para...'
+    ChildSizing.LeftRightSpacing = 6
+    ChildSizing.EnlargeHorizontal = crsHomogenousChildResize
+    ChildSizing.EnlargeVertical = crsScaleChilds
+    ChildSizing.ShrinkHorizontal = crsHomogenousChildResize
+    ChildSizing.ShrinkVertical = crsHomogenousChildResize
+    ChildSizing.Layout = cclTopToBottomThenLeftToRight
+    ChildSizing.ControlsPerLine = 2
+    ClientHeight = 100
+    ClientWidth = 198
+    Color = 8408865
+    ColumnLayout = clVerticalThenHorizontal
+    Font.Color = 15198183
+    Font.Height = -21
+    Font.Name = 'Sans'
+    ItemIndex = 0
+    Items.Strings = (
+      ''
+      ''
+    )
+    OnClick = acaoClick
+    ParentBidiMode = False
+    ParentFont = False
+    ParentColor = False
+    ParentShowHint = False
+    TabOrder = 0
+    object fakeop1: TLabel
+      Left = 30
+      Height = 25
+      Top = 13
+      Width = 87
+      Anchors = [akLeft]
+      Caption = 'Desligar'
+      ParentColor = False
+      OnClick = fakeop1Click
+    end
+    object fakeop2: TLabel
+      Left = 30
+      Height = 25
+      Top = 64
+      Width = 92
+      Anchors = [akLeft]
+      Caption = 'Reiniciar'
+      ParentColor = False
+      OnClick = fakeop2Click
+    end
+  end
   object letreiro: TLabel
-    Left = 240
+    Left = 245
     Height = 25
     Top = 104
     Width = 61
@@ -1488,5 +1511,52 @@ object boanoite: Tboanoite
     FillAttribute = 0
     left = 384
     top = 16
+  end
+  object meumenu: TMainMenu
+    BidiMode = bdRightToLeft
+    ParentBidiMode = False
+    left = 324
+    top = 23
+    object MenuItem1: TMenuItem
+      Caption = 'Contribuir...'
+      object MenuItem3: TMenuItem
+        Caption = 'Doando'
+        OnClick = MenuItem3Click
+      end
+      object MenuItem4: TMenuItem
+        Caption = 'Sugestão'
+        OnClick = MenuItem4Click
+      end
+    end
+    object MenuItem2: TMenuItem
+      Caption = 'Social'
+      object MenuItem5: TMenuItem
+        Caption = 'Instagram'
+        OnClick = MenuItem5Click
+      end
+      object MenuItem6: TMenuItem
+        Caption = 'YouTube'
+        OnClick = MenuItem6Click
+      end
+      object MenuItem7: TMenuItem
+        Caption = 'GitHub'
+        OnClick = MenuItem7Click
+      end
+    end
+    object MenuItem8: TMenuItem
+      Caption = 'Sobre'
+      object MenuItem9: TMenuItem
+        Caption = 'Licensa'
+        OnClick = MenuItem9Click
+      end
+      object MenuItem10: TMenuItem
+        Caption = 'O programa'
+        OnClick = MenuItem10Click
+      end
+      object MenuItem11: TMenuItem
+        Caption = 'O criador'
+        OnClick = MenuItem11Click
+      end
+    end
   end
 end

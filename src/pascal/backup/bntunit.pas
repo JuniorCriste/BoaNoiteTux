@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, UTF8Process, Forms, Controls, Graphics, Dialogs,
-  ExtCtrls, ActnList, StdCtrls, Buttons, bntcunit;
+  ExtCtrls, ActnList, StdCtrls, lclintf, Buttons, Menus, bntcunit;
 
 type
 
@@ -14,7 +14,21 @@ type
 
   Tboanoite = class(TForm)
     cancelar: TButton;
+    fakeop1: TLabel;
+    fakeop2: TLabel;
     letreiro: TLabel;
+    meumenu: TMainMenu;
+    MenuItem1: TMenuItem;
+    MenuItem10: TMenuItem;
+    MenuItem11: TMenuItem;
+    MenuItem2: TMenuItem;
+    MenuItem3: TMenuItem;
+    MenuItem4: TMenuItem;
+    MenuItem5: TMenuItem;
+    MenuItem6: TMenuItem;
+    MenuItem7: TMenuItem;
+    MenuItem8: TMenuItem;
+    MenuItem9: TMenuItem;
     wallpaper: TImage;
     programar: TBitBtn;
     addTempo: TComboBox;
@@ -25,12 +39,24 @@ type
     num2: TEdit;
     procedure addTempoChange(Sender: TObject);
     procedure cancelarClick(Sender: TObject);
+    procedure fakeop1Click(Sender: TObject);
+    procedure fakeop2Click(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure MenuItem10Click(Sender: TObject);
+    procedure MenuItem11Click(Sender: TObject);
+    procedure MenuItem3Click(Sender: TObject);
+    procedure MenuItem4Click(Sender: TObject);
+    procedure MenuItem5Click(Sender: TObject);
+    procedure MenuItem6Click(Sender: TObject);
+    procedure MenuItem7Click(Sender: TObject);
+    procedure MenuItem9Click(Sender: TObject);
     procedure num1KeyPress(Sender: TObject; var Key: char);
     procedure num2KeyPress(Sender: TObject; var Key: char);
     procedure programarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure acaoClick(Sender: TObject);
+    procedure wallpaperMouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Integer);
   private
 
   public
@@ -70,7 +96,7 @@ end;
 
 procedure addUmaHora;
 begin
-   if horasNum < 24 then
+   if horasNum < 23 then
     begin
     horasNum:= horasNum + 1
     end else
@@ -82,7 +108,16 @@ end;
 
 
 procedure comando;
+var
+  flutuante: integer;
 begin
+ { flutuante:= StrToInt(showM);
+  if flutuante < 10 then
+   begin
+   showM := '0' + showM;
+   showmessage('flutuante: ' + IntToStr(flutuante) + '  showM: '+ showM);
+   end;
+  }
   if boanoite.acao.ItemIndex = 0 then
   begin
   ordenar:= 'shutdown ' + showH + ':' + showM;
@@ -96,8 +131,10 @@ end;
 procedure adicionarTempo;
 begin
   contarTempo;
+
   {showmessage(inttostr(horasNum) + inttostr(minutosNum));}
   {1 Minuto}
+
   if  boanoite.addTempo.ItemIndex = 0 then
   begin
     addMin := 1;
@@ -165,7 +202,7 @@ begin
   {1 Hora}
   if  boanoite.addTempo.ItemIndex = 4 then
   begin
-    if horasNum < 24 then
+    if horasNum < 23 then
     begin
     horasNum:= horasNum + 1
     end else
@@ -181,23 +218,26 @@ begin
 
 
 
-  {Outro Horário}
+  if minutosNum < 10 then
+  begin
+  showM := '0' + IntToStr(minutosNum);
+  showmessage(ShowM);
+  end;
+
+  if horasNum < 10 then
+  begin
+  showH := '0' + IntToStr(HorasNum);
+  end;
+
+
+
+
+    {Outro Horário}
   if  boanoite.addTempo.ItemIndex = 5 then
   begin
     showH:= boanoite.num1.Text;
     showM:= boanoite.num2.Text;
 
-  end;
-
-
-  if minutosNum < 10 then
-  begin
-  showM := '0' + IntToStr(minutosNum);
-  end;
-
-  if horasNum < 10 then
-  begin
-  showH := '0' + IntToStr(minutosNum);
   end;
 
   comando;
@@ -207,6 +247,11 @@ end;
 procedure Tboanoite.acaoClick(Sender: TObject);
 begin
 
+end;
+
+procedure Tboanoite.wallpaperMouseDown(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Integer);
+begin
 end;
 
 procedure Tboanoite.FormCreate(Sender: TObject);
@@ -223,9 +268,9 @@ begin
   boanoite.myShell.Execute;
 {  programarShell.Free;
   boanoite.myShell.Free;
- }
-  {showmessage(ordenar);}
 
+  showmessage(ordenar);
+    }
 end;
 
 procedure Tboanoite.programarClick(Sender: TObject);
@@ -250,14 +295,14 @@ begin
   confirmacao.Visible:= true;
   boanoite.Visible:= false;
   end;
-
+  showmessage(showH + ':' + showM);
 end;
 
 procedure Tboanoite.addTempoChange(Sender: TObject);
 begin
   if addTempo.ItemIndex = 5 then
   begin
-  boanoite.Height:= 300;
+  boanoite.Height:= 315;
   programar.Top:= 245;
 
   num1.Top:= 195;
@@ -265,7 +310,7 @@ begin
   separador.Top:= 195;
   end else
   begin             
-  boanoite.Height:= 240;
+  boanoite.Height:= 265;
   programar.Top:= 195;
 
   num1.Top:= 245;
@@ -282,8 +327,58 @@ begin
 
 end;
 
+procedure Tboanoite.fakeop1Click(Sender: TObject);
+begin
+  acao.ItemIndex:= 0;
+end;
+
+procedure Tboanoite.fakeop2Click(Sender: TObject);
+begin
+  acao.ItemIndex:= 1;
+end;
+
 procedure Tboanoite.FormShow(Sender: TObject);
 begin
+end;
+
+procedure Tboanoite.MenuItem10Click(Sender: TObject);
+begin
+  OpenURL('https://www.informaticode.com.br/2020/09/boanoitetux.html');
+end;
+
+procedure Tboanoite.MenuItem11Click(Sender: TObject);
+begin
+  OpenURL('https://www.informaticode.com.br/p/junior-criste.html');
+end;
+
+procedure Tboanoite.MenuItem3Click(Sender: TObject);
+begin
+  OpenURL('https://www.informaticode.com.br/p/doacoes.html');
+end;
+
+procedure Tboanoite.MenuItem4Click(Sender: TObject);
+begin
+  OpenURL('mailto:informaticode@gmail.com');
+end;
+
+procedure Tboanoite.MenuItem5Click(Sender: TObject);
+begin
+  OpenURL('https://instagram.com/informaticode/');
+end;
+
+procedure Tboanoite.MenuItem6Click(Sender: TObject);
+begin
+  OpenURL('https://youtube.com/informaticode/');
+end;
+
+procedure Tboanoite.MenuItem7Click(Sender: TObject);
+begin
+  OpenURL('https://github.com/juniorcriste');
+end;
+
+procedure Tboanoite.MenuItem9Click(Sender: TObject);
+begin
+  OpenURL('https://www.gnu.org/licenses/gpl-2.0.html');
 end;
 
 procedure Tboanoite.num1KeyPress(Sender: TObject; var Key: char);

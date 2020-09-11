@@ -7,7 +7,6 @@ object confirmacao: Tconfirmacao
   Caption = 'Boa Noite Tux: Agendado!'
   ClientHeight = 245
   ClientWidth = 449
-  OnCreate = FormCreate
   Position = poDesktopCenter
   LCLVersion = '1.8.2.0'
   object wallpaper: TImage

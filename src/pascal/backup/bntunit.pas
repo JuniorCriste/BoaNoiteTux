@@ -221,7 +221,7 @@ begin
   if minutosNum < 10 then
   begin
   showM := '0' + IntToStr(minutosNum);
-  showmessage(ShowM);
+  {showmessage(ShowM); }
   end;
 
   if horasNum < 10 then
@@ -295,7 +295,7 @@ begin
   confirmacao.Visible:= true;
   boanoite.Visible:= false;
   end;
-  showmessage(showH + ':' + showM);
+ { showmessage(showH + ':' + showM); }
 end;
 
 procedure Tboanoite.addTempoChange(Sender: TObject);

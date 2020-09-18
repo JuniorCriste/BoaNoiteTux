@@ -190,7 +190,7 @@ begin
 
     if minutosNum + 45 < 60 then
     begin
-    minutosNum:= minutosNum + 15
+    minutosNum:= minutosNum + 45
     end else
     begin
     minutosNum:= 45 - (60- minutosNum);

@@ -5,7 +5,7 @@ unit bntCunit;
 interface
 
 uses
-  Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
+  Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls, lclintf,
   Buttons, ExtCtrls;
 
 type
@@ -13,11 +13,14 @@ type
   { Tconfirmacao }
 
   Tconfirmacao = class(TForm)
+    donate: TBitBtn;
     desfazer: TBitBtn;
     letreiro1: TLabel;
     letreiro2: TLabel;
     wallpaper: TImage;
     procedure desfazerClick(Sender: TObject);
+    procedure donateClick(Sender: TObject);
+    procedure doneClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
   private
 
@@ -44,6 +47,16 @@ begin
   boanoite.Visible:= true;  
   confirmacao.Visible:= false;
   boanoite.cancelar.Click;
+
+end;
+
+procedure Tconfirmacao.donateClick(Sender: TObject);
+begin
+  OpenURL('https://www.informaticode.com.br/p/doacoes.html');
+end;
+
+procedure Tconfirmacao.doneClick(Sender: TObject);
+begin
 
 end;
 

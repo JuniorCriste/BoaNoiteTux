@@ -1,5 +1,5 @@
 ### BOA NOITE TUX
-O Boa Noite Tux é um programa que desenvolvemos para que o usuário tenha o poder de programar o computador para desligar após um tempo, ou em um horário específico.
+O Boa Noite Tux é uma aplicação desenvolvida que permite que o usuário tenha o poder de programar o computador para desligar ou reiniciar após um tempo, ou em um horário específico.
 
 A compatibilidade do programa é com o sistema Linux e suas distribuições.
 

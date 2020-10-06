@@ -1,0 +1,14 @@
+Package:boanoitetux
+Version: 1.0
+Priority:
+Architecture: all
+Essential:
+Depends:
+Pre-depends:
+Suggests:
+Installed-Size:
+Maintainer: Junior Criste | INFORMATICODE <informaticode@gmail.com>
+Conflicts:
+Replaces:
+Provides:
+Description: O Boa Noite Tux é uma aplicação que programa o computador para desligar após um tempo, ou em um horário específico.    Instagram: @informaticode | @myself.junior    www.informaticode.com.br    github.com/JuniorCriste

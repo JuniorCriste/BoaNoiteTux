@@ -1,0 +1,7 @@
+Primeiro copie a pasta "boanoitetux" que está nesse diretório em /tmp.
+Depois abra um terminal em /tmp e execute:
+
+dpkg-deb -b /tmp/boanoitetux /tmp/boanoitetux.deb
+
+
+

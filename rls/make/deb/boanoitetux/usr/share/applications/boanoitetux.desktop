@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Boa Noite Tux
+GenericName=Good Night Tux
+Comment=Programe o computador para desligar ou reiniciar.
+Exec=boanoitetux
+Terminal=false
+Type=Application
+Icon=boanoitetux.png
+Categories=GNOME;GTK;Utility;TextEditor;
